@@ -12,10 +12,12 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="preview" element={<Preview />} />
-        </Routes>
+        <div className="main">
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="preview" element={<Preview />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,
