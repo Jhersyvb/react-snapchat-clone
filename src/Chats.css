@@ -36,6 +36,7 @@
 }
 
 .chats__avatar {
+  cursor: pointer;
   width: 25px !important;
   height: 25px !important;
 }

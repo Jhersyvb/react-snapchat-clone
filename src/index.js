@@ -5,24 +5,11 @@ import App from './App'
 import { store } from './app/store'
 import { Provider } from 'react-redux'
 import * as serviceWorker from './serviceWorker'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Preview from './Preview'
-import Chats from './Chats'
-import ChatView from './ChatView'
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <div className="main">
-          <Routes>
-            <Route path="/" element={<App />} />
-            <Route path="preview" element={<Preview />} />
-            <Route path="chats" element={<Chats />} />
-            <Route path="chats/view" element={<ChatView />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

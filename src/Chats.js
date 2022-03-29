@@ -4,18 +4,27 @@ import SearchIcon from '@material-ui/icons/Search'
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble'
 import './Chats.css'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
-import { db } from './firebase'
+import { auth, db } from './firebase'
 import Chat from './components/Chat'
+import { useSelector } from 'react-redux'
+import { selectUser } from './features/appSlice'
+import { signOut } from 'firebase/auth'
 
 function Chats() {
   const [posts, setPosts] = useState([])
+  const user = useSelector(selectUser)
 
   useEffect(
     () =>
       onSnapshot(
         query(collection(db, 'posts'), orderBy('timestamp', 'desc')),
         snapshot => {
-          setPosts(snapshot.docs)
+          setPosts(
+            snapshot.docs.map(doc => ({
+              id: doc.id,
+              data: doc.data(),
+            }))
+          )
         }
       ),
     []
@@ -24,7 +33,11 @@ function Chats() {
   return (
     <div className="chats">
       <div className="chats__header">
-        <Avatar className="chats__avatar" />
+        <Avatar
+          src={user.profilePic}
+          onClick={() => signOut(auth)}
+          className="chats__avatar"
+        />
         <div className="chats__search">
           <SearchIcon />
           <input placeholder="Friends" type="text" />
@@ -32,9 +45,22 @@ function Chats() {
         <ChatBubbleIcon className="chats__chat-icon" />
       </div>
       <div className="chats__posts">
-        {posts.map(post => (
-          <Chat key={post.id} id={post.id} post={post.data()} />
-        ))}
+        {posts.map(
+          ({
+            id,
+            data: { profilePic, username, timestamp, imageUrl, read },
+          }) => (
+            <Chat
+              key={id}
+              id={id}
+              username={username}
+              timestamp={timestamp}
+              imageUrl={imageUrl}
+              read={read}
+              profilePic={profilePic}
+            />
+          )
+        )}
       </div>
     </div>
   )
