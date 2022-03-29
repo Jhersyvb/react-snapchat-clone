@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Preview from './Preview'
 import Chats from './Chats'
+import ChatView from './ChatView'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,6 +19,7 @@ ReactDOM.render(
             <Route path="/" element={<App />} />
             <Route path="preview" element={<Preview />} />
             <Route path="chats" element={<Chats />} />
+            <Route path="chats/view" element={<ChatView />} />
           </Routes>
         </div>
       </BrowserRouter>

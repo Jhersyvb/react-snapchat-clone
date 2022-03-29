@@ -32,7 +32,7 @@ function Chat({ id, post }) {
       <div className="chat__info">
         <h4>{post.username}</h4>
         <p>
-          Tap to view -{' '}
+          {!post.read && 'Tap to view -'}{' '}
           <ReactTimeago
             date={new Date(post.timestamp?.toDate()).toUTCString()}
           />
