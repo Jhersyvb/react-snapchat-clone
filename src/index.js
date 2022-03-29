@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 import * as serviceWorker from './serviceWorker'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Preview from './Preview'
+import Chats from './Chats'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.render(
           <Routes>
             <Route path="/" element={<App />} />
             <Route path="preview" element={<Preview />} />
+            <Route path="chats" element={<Chats />} />
           </Routes>
         </div>
       </BrowserRouter>

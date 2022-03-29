@@ -1,0 +1,61 @@
+.chats {
+  position: relative;
+  width: 250px;
+  height: 400px;
+}
+
+.chats__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 50px;
+  background-color: #059ee0;
+}
+
+.chats__search {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding-left: 8px;
+}
+
+.chats__search > input {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  font-size: 12px;
+  flex: 1;
+  color: white;
+}
+
+.chats__search > input::placeholder {
+  color: white;
+  opacity: 1;
+}
+
+.chats__avatar {
+  width: 25px !important;
+  height: 25px !important;
+}
+
+.chats__posts {
+  background-color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 1px -7px 7px -6px rgba(0, 0, 0, 0.44);
+  height: 359px;
+  margin-top: -9px;
+  overflow-y: scroll;
+}
+
+.chats__posts::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.chats__posts {
+  -ms-overflow-style: none; /* IE and Edge */
+  srollbar-width: none; /* Firefox */
+}
