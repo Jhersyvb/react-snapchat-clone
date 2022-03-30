@@ -34,22 +34,31 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter>
-        <Routes>
-          {!user ? (
-            <>
-              <Route path="login" element={<Login />} />
-              <Route path="*" element={<Navigate to="/login" replace />} />
-            </>
-          ) : (
-            <>
-              <Route path="/" element={<WebcamCapture />} />
-              <Route path="preview" element={<Preview />} />
-              <Route path="chats" element={<Chats />} />
-              <Route path="chats/view" element={<ChatView />} />
-              <Route path="*" element={<Navigate to="/chats" replace />} />
-            </>
-          )}
-        </Routes>
+        {!user ? (
+          <Routes>
+            <Route path="login" element={<Login />} />
+            <Route path="*" element={<Navigate to="/login" replace />} />
+          </Routes>
+        ) : (
+          <>
+            <img
+              className="app__logo"
+              src="https://live.staticflickr.com/2878/33188781040_5ed0e6f17d.jpg"
+              alt=""
+            />
+            <div className="app__body">
+              <div className="app__body-background">
+                <Routes>
+                  <Route path="/" element={<WebcamCapture />} />
+                  <Route path="preview" element={<Preview />} />
+                  <Route path="chats" element={<Chats />} />
+                  <Route path="chats/view" element={<ChatView />} />
+                  <Route path="*" element={<Navigate to="/chats" replace />} />
+                </Routes>
+              </div>
+            </div>
+          </>
+        )}
       </BrowserRouter>
     </div>
   )

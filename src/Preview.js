@@ -21,11 +21,13 @@ import {
 } from 'firebase/firestore'
 import { getDownloadURL, ref, uploadString } from 'firebase/storage'
 import './Preview.css'
+import { selectUser } from './features/appSlice'
 
 function Preview() {
   const cameraImage = useSelector(selectCameraImage)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const user = useSelector(selectUser)
 
   useEffect(() => {
     if (!cameraImage) {
@@ -39,9 +41,9 @@ function Preview() {
 
   const sendPost = async () => {
     const docRef = await addDoc(collection(db, 'posts'), {
-      username: 'Jhersy',
+      username: user.username,
       read: false,
-      // profilePic
+      profilePic: user.profilePic,
       timestamp: serverTimestamp(),
     })
 
